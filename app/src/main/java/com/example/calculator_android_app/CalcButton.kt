@@ -25,7 +25,7 @@ fun CalcButton(
         onClick = onClick,
         modifier = Modifier
             .width(76.dp)
-            .height(68.dp),
+            .height(88.dp),
         shape = RoundedCornerShape(18.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color(color),

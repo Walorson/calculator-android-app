@@ -2,6 +2,7 @@
 package com.example.kalkulator
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -14,6 +15,7 @@ import androidx.compose.ui.unit.dp
 val blue = 0xFF168BFF;
 @Composable
 fun VerticalButtonGrid(
+    modifier: Modifier = Modifier,
     onButtonClick: (String) -> Unit
 ) {
     val buttons = listOf(
