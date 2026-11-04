@@ -23,39 +23,44 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.calculator_android_app.ui.theme.CalculatorandroidappTheme
 import com.example.calculator_android_app.Display
 import com.example.calculator_android_app.VerticalButtonGrid
+import com.example.compose.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            var expression by rememberSaveable {
-                mutableStateOf("")
-            }
-
-            val configuration = LocalConfiguration.current
-
-            when (configuration.orientation) {
-
-                Configuration.ORIENTATION_LANDSCAPE -> {
-                    LandscapeLayout(
-                        expression = expression,
-                        onButtonClick = { button ->
-                            expression += button
-                        }
-                    )
+            AppTheme(
+                darkTheme = false,
+                dynamicColor = false
+            ) {
+                var expression by rememberSaveable {
+                    mutableStateOf("")
                 }
 
-                else -> {
-                    PortraitLayout(
-                        expression = expression,
-                        onButtonClick = { button ->
-                            expression += button
-                        }
-                    )
+                val configuration = LocalConfiguration.current
+
+                when (configuration.orientation) {
+
+                    Configuration.ORIENTATION_LANDSCAPE -> {
+                        LandscapeLayout(
+                            expression = expression,
+                            onButtonClick = { button ->
+                                expression += button
+                            }
+                        )
+                    }
+
+                    else -> {
+                        PortraitLayout(
+                            expression = expression,
+                            onButtonClick = { button ->
+                                expression += button
+                            }
+                        )
+                    }
                 }
             }
 

@@ -13,8 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-val blue = 0xFF168BFF;
-
 @Composable
 fun VerticalButtonGrid(
     modifier: Modifier = Modifier,
@@ -48,7 +46,6 @@ fun VerticalButtonGrid(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(buttonHeight),
-                    color = blue,
                     onClick = {
                         onButtonClick(buttons[index])
                     }

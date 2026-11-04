@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -29,7 +30,7 @@ fun Display(
             .fillMaxWidth()
             .height(if (compact) 75.dp else 145.dp)
             .background(
-                color = Color(0xFF101522),
+                color = MaterialTheme.colorScheme.surface,
                 shape = shape
             )
             .border(

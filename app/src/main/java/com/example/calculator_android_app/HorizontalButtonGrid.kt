@@ -9,8 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-val darkBlue = 0xFF325AFF;
-
 @Composable
 fun HorizontalButtonGrid(
     modifier: Modifier = Modifier,
@@ -43,7 +41,6 @@ fun HorizontalButtonGrid(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(buttonHeight),
-                    color = darkBlue,
                     onClick = {
                         onButtonClick(buttons[index])
                     }

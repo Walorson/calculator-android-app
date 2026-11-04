@@ -2,6 +2,7 @@ package com.example.calculator_android_app
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,7 +17,7 @@ fun PortraitLayout(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF080D18))
+            .background(MaterialTheme.colorScheme.background)
             .padding(12.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -42,7 +43,7 @@ fun LandscapeLayout(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF080D18))
+            .background(MaterialTheme.colorScheme.background)
             .padding(12.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
