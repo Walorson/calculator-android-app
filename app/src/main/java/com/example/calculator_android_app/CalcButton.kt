@@ -1,5 +1,5 @@
 
-package com.example.kalkulator
+package com.example.calculator_android_app
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.height
@@ -18,14 +18,13 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun CalcButton(
     text: String,
+    modifier: Modifier,
     color: Long,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
 ) {
     Button(
         onClick = onClick,
-        modifier = Modifier
-            .width(76.dp)
-            .height(88.dp),
+        modifier = modifier,
         shape = RoundedCornerShape(18.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color(color),

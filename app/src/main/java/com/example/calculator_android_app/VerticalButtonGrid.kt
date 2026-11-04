@@ -1,8 +1,9 @@
 
-package com.example.kalkulator
+package com.example.calculator_android_app
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -13,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 val blue = 0xFF168BFF;
+
 @Composable
 fun VerticalButtonGrid(
     modifier: Modifier = Modifier,
@@ -26,21 +28,33 @@ fun VerticalButtonGrid(
         "0", ".", "+", "="
     )
 
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(4),
-        modifier = Modifier
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
-    ) {
-        itemsIndexed(buttons) { index, button ->
-            CalcButton(
-                text = button,
-                color = blue,
-                onClick = {
-                    onButtonClick(button)
-                }
-            )
+    BoxWithConstraints(modifier = modifier) {
+
+        val spacing = 4.dp
+
+        val buttonHeight =
+            (maxHeight - spacing * 4) / 5
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(4),
+            modifier = Modifier.fillMaxSize(),
+            horizontalArrangement = Arrangement.spacedBy(spacing),
+            verticalArrangement = Arrangement.spacedBy(spacing),
+            userScrollEnabled = false
+        ) {
+            items(buttons.size) { index ->
+                CalcButton(
+                    text = buttons[index],
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(buttonHeight),
+                    color = blue,
+                    onClick = {
+                        onButtonClick(buttons[index])
+                    }
+                )
+            }
         }
     }
 }
+

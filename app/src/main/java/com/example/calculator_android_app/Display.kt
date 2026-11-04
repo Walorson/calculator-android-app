@@ -1,5 +1,5 @@
 
-package com.example.kalkulator
+package com.example.calculator_android_app
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -15,17 +15,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+
 @Composable
 fun Display(
     expression: String,
-    result: String
+    result: String,
+    compact: Boolean = false
 ) {
     val shape = RoundedCornerShape(16.dp)
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(145.dp)
+            .height(if (compact) 75.dp else 145.dp)
             .background(
                 color = Color(0xFF101522),
                 shape = shape
@@ -35,20 +37,20 @@ fun Display(
                 color = Color(0xFF26364D),
                 shape = shape
             )
-            .padding(12.dp),
+            .padding(if (compact) 8.dp else 12.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
             text = "WPROWADZONE DZIAŁANIE",
             color = Color(0xFF75849B),
-            fontSize = 10.sp
+            fontSize = 9.sp
         )
 
         Text(
             text = expression.ifEmpty { "0" },
             modifier = Modifier.fillMaxWidth(),
             color = Color(0xFFEAF2FF),
-            fontSize = 28.sp,
+            fontSize = if (compact) 20.sp else 28.sp,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.End,
             maxLines = 1
@@ -62,13 +64,13 @@ fun Display(
             Text(
                 text = "WYNIK NA BIEŻĄCO",
                 color = Color(0xFF75849B),
-                fontSize = 10.sp
+                fontSize = 9.sp
             )
 
             Text(
                 text = result,
                 color = Color(0xFF168BFF),
-                fontSize = 23.sp,
+                fontSize = if (compact) 16.sp else 23.sp,
                 fontWeight = FontWeight.SemiBold
             )
         }
