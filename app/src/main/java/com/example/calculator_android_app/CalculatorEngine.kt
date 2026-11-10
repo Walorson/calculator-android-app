@@ -6,16 +6,22 @@ import org.mariuszgromada.math.mxparser.Expression
 object CalculatorEngine {
 
     val error = "ERROR";
+
     fun calculate(expression: String): String {
         if (expression.isBlank()) return ""
 
         return try {
-            val result = Expression(expression).calculate()
+            val parsedExpression = Expression(expression)
+
+            if (!parsedExpression.checkSyntax()) {
+                return ""
+            }
+
+            val result = parsedExpression.calculate()
 
             if (result.isNaN() || result.isInfinite()) {
-                "ERROR"
+                error
             } else {
-                // Usuwa końcówkę .0 dla liczb całkowitych
                 if (result % 1.0 == 0.0) {
                     result.toLong().toString()
                 } else {
@@ -23,7 +29,8 @@ object CalculatorEngine {
                 }
             }
         } catch (e: Exception) {
-            "ERROR"
+            error
         }
     }
+
 }
