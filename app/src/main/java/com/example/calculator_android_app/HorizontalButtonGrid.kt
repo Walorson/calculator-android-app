@@ -17,7 +17,7 @@ fun HorizontalButtonGrid(
     val buttons = listOf(
         "sin", "cos",
         "tan", "π",
-        "√", "x^y",
+        "√", "^",
         "ln", "e"
     )
 

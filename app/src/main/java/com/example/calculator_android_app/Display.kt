@@ -28,7 +28,7 @@ fun Display(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(if (compact) 75.dp else 145.dp)
+            .height(if (compact) 85.dp else 155.dp)
             .background(
                 color = MaterialTheme.colorScheme.surface,
                 shape = shape

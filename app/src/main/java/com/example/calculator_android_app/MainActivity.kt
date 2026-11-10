@@ -2,6 +2,7 @@ package com.example.calculator_android_app
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -26,18 +27,53 @@ import androidx.compose.ui.unit.dp
 import com.example.calculator_android_app.Display
 import com.example.calculator_android_app.VerticalButtonGrid
 import com.example.compose.AppTheme
+import com.example.kalkulator.CalculatorEngine
+import org.mariuszgromada.math.mxparser.Expression
+import org.mariuszgromada.math.mxparser.License
+import kotlin.collections.plusAssign
+import kotlin.math.log
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        License.iConfirmNonCommercialUse("Szymon Gniadek")
+
         enableEdgeToEdge()
         setContent {
             AppTheme(
-                darkTheme = false,
+                darkTheme = true,
                 dynamicColor = false
             ) {
+
                 var expression by rememberSaveable {
                     mutableStateOf("")
+                }
+                var result by rememberSaveable {
+                    mutableStateOf("")
+                }
+
+                fun buttonEvent(char: String)
+                {
+                    when (char) {
+                        "=" -> {
+                            result = CalculatorEngine.calculate(expression)
+                            if (result != CalculatorEngine.error)
+                                expression = result
+                        }
+
+                        "C" -> {
+                            expression = ""
+                            result = ""
+                        }
+
+                        "⌫" -> {
+                            expression = expression.slice(0..expression.length-2)
+                        }
+
+                        else -> {
+                            expression += char
+                        }
+                    }
                 }
 
                 val configuration = LocalConfiguration.current
@@ -47,8 +83,9 @@ class MainActivity : ComponentActivity() {
                     Configuration.ORIENTATION_LANDSCAPE -> {
                         LandscapeLayout(
                             expression = expression,
-                            onButtonClick = { button ->
-                                expression += button
+                            result = result,
+                            onButtonClick = { charButton ->
+                                buttonEvent(charButton)
                             }
                         )
                     }
@@ -56,8 +93,9 @@ class MainActivity : ComponentActivity() {
                     else -> {
                         PortraitLayout(
                             expression = expression,
-                            onButtonClick = { button ->
-                                expression += button
+                            result = result,
+                            onButtonClick = { charButton ->
+                                buttonEvent(charButton)
                             }
                         )
                     }

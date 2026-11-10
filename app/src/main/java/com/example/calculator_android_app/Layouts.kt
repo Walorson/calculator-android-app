@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun PortraitLayout(
     expression: String,
+    result: String,
     onButtonClick: (String) -> Unit
 ) {
     Column(
@@ -23,7 +24,7 @@ fun PortraitLayout(
     ) {
         Display(
             expression = expression,
-            result = ""
+            result = result
         )
 
         VerticalButtonGrid(
@@ -38,6 +39,7 @@ fun PortraitLayout(
 @Composable
 fun LandscapeLayout(
     expression: String,
+    result: String,
     onButtonClick: (String) -> Unit
 ) {
     Column(
@@ -49,7 +51,7 @@ fun LandscapeLayout(
     ) {
         Display(
             expression = expression,
-            result = "",
+            result = result,
             compact = true
         )
 
