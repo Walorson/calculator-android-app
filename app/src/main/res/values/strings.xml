@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mobile Calculator</string>
+    <string name="text_up">Entered math operation</string>
+    <string name="text_down">Result</string>
 </resources>
