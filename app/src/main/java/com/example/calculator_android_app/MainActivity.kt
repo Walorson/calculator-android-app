@@ -8,10 +8,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,7 +46,11 @@ class MainActivity : ComponentActivity() {
                 darkTheme = false,
                 dynamicColor = false
             ) {
-
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .safeDrawingPadding()
+                ) {
                 var expression by rememberSaveable {
                     mutableStateOf("")
                 }
@@ -100,8 +106,8 @@ class MainActivity : ComponentActivity() {
                         )
                     }
                 }
+                }
             }
-
         }
     }
 }

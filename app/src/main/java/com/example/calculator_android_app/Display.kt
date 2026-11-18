@@ -30,7 +30,7 @@ fun Display(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(if (compact) 90.dp else 155.dp)
+            .height(if (compact) 95.dp else 155.dp)
             .background(
                 color = MaterialTheme.colorScheme.surface,
                 shape = shape
@@ -40,7 +40,7 @@ fun Display(
                 color = Color(0xFF26364D),
                 shape = shape
             )
-            .padding(if (compact) 8.dp else 12.dp),
+            .padding(if (compact) 5.dp else 12.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
